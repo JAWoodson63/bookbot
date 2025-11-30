@@ -1,3 +1,4 @@
+import sys
 from stats import num_of_words
 from stats import num_of_characters
 from stats import sorting
@@ -9,7 +10,11 @@ def get_book_text(path):
 
 def main():
     # Retrieving book data
-    path = "books/frankenstein.txt"
+    if len(sys.argv) == 2:
+        path = sys.argv[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     book = get_book_text(path)
     # Extracting book data
     num = num_of_words(book)
